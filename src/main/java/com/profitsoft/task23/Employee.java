@@ -3,7 +3,7 @@ package com.profitsoft.task23;
 import java.util.Objects;
 
 public class Employee {
-    private Long id;
+    private Long id = 0L;
     private String name;
     private String phone;
     private String region;
@@ -14,13 +14,12 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String name, String phone, String region, double salaryPerMonth, double workedHours) {
-        this.id = -1L;
+    public Employee(String name, String phone, String region) {
         this.name = name;
         this.phone = phone;
         this.region = region;
-        this.salaryPerMonth = salaryPerMonth;
-        this.workedHours = workedHours;
+        this.salaryPerMonth = 0.0;
+        this.workedHours = 0.0;
     }
 
     public Long getId() {
@@ -72,6 +71,9 @@ public class Employee {
     }
 
     public double getHoursPercent(int hoursPerMonth) {
+        if (hoursPerMonth == 0) {
+            return 0.0;
+        }
         return workedHours * PERCENT / hoursPerMonth;
     }
 
@@ -81,7 +83,6 @@ public class Employee {
      * @param hoursPerMonth - parameter for Booker
      * @return double value Math.round in 2
      */
-    //protected abstract double getMonthSalary(int hoursPerMonth);
     protected double getMonthSalary(int hoursPerMonth) {
         double salary = getSalaryPerMonth() * getHoursPercent(hoursPerMonth) / PERCENT;
         return Math.round(salary * 100.0) / 100.0;
