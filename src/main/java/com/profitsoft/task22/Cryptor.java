@@ -2,14 +2,14 @@ package com.profitsoft.task22;
 
 import java.util.regex.Pattern;
 
-public class Main {
-    public static void main(String[] args) {
-        String string = "Good Night";
-        System.out.println(encode(string));
-        System.out.println(decode(encode(string)));
-    }
+public class Cryptor {
+//    public static void main(String[] args) {
+//        String string = "Good Night";
+//        System.out.println(encode(string));
+//        System.out.println(decode(encode(string)));
+//    }
 
-    private static String encode(String string) {
+    public String encode(String string) {
         char[] chars = string.toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
         for (char c : chars) {
@@ -30,7 +30,7 @@ public class Main {
         return stringBuilder.toString();
     }
 
-    private static String decode(String string) {
+    public String decode(String string) {
         String[] temp = string.split(Pattern.quote("|"));
         StringBuilder stringBuilder = new StringBuilder();
         for (String str : temp) {
@@ -51,11 +51,11 @@ public class Main {
             char c = (char) bi;
             stringBuilder1.append(c);
         }
-        stringBuilder1.append(" ");
-        return stringBuilder1.toString();
+        //stringBuilder1.append(" ");
+        return stringBuilder1.toString().trim();
     }
 
-    public static Integer binaryToInteger(String binary) {
+    private static Integer binaryToInteger(String binary) {
         char[] numbers = binary.toCharArray();
         int result = 0;
         int count = 0;
